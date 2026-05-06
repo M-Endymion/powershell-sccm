@@ -55,8 +55,6 @@ These scripts were written for use in a production environment. Always test in a
 
 ### Credits & Contact
 
-Credits & Contact
-
 Maintained by M-Endymion
 
 Feel free to open Issues or Pull Requests if you have improvements!
