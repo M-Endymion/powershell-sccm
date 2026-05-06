@@ -4,29 +4,31 @@ This folder contains PowerShell scripts related to **installing and removing** s
 
 ### Scripts
 
-| Script Name                    | Description                                                      | Category                  |
-|--------------------------------|------------------------------------------------------------------|---------------------------|
-| `Remove-NewOutlook.ps1`        | Removes the modern "New Outlook" AppX package + registry tattoo | Application Removal       |
+| Script Name                          | Description                                                                 | Category              |
+|--------------------------------------|-----------------------------------------------------------------------------|-----------------------|
+| `Remove-NewOutlook.ps1`              | Removes the modern "New Outlook" AppX package and applies registry tattoo   | Application Removal   |
+| `Uninstall-DellSupportAssist.ps1`    | Uninstalls Dell SupportAssist while preserving specific Business versions   | Application Removal   |
 
 ---
 
 ### Usage Guidelines
 
-- Run scripts with **Administrator** privileges.
-- Most scripts are designed for use with SCCM / MECM (Intune or traditional).
-- Registry "tattoos" are used for detection rules and compliance reporting.
+- All scripts must be run with **Administrator** privileges.
+- Designed for use with SCCM / MECM (including proper detection markers / tattoos).
+- Most scripts include robust logging for troubleshooting.
 
 ### Naming Convention
-- All scripts follow `Verb-Noun.ps1` format (e.g. `Install-`, `Remove-`, `Update-`).
-- Use clear, descriptive names.
+- Scripts follow the `Verb-Noun.ps1` standard (e.g. `Install-`, `Remove-`, `Uninstall-`, `Update-`).
+- Clear, descriptive names with no version numbers in filenames.
 
-### Example
+### Examples
+
 ```powershell
-# Remove New Outlook locally
+# Run locally
 .\Remove-NewOutlook.ps1
 
-# Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\Remove-NewOutlook.ps1"
+# Run remotely via SCCM or PowerShell remoting
+Invoke-Command -ComputerName "PC001" -FilePath ".\Uninstall-DellSupportAssist.ps1"
 ```
 
 ---
