@@ -2,38 +2,39 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation scripts I’ve developed and used in enterprise environments.
+A collection of real-world automation scripts developed for enterprise environments.
 
 ### Main Categories
 
-- **Software / Application Installation**
+- **Software / Application Installation & Removal**
 - **Windows Update Management & Fixes**
 - **OS Configuration & Hardening**
 - **Client Health & Remediation**
 - **Reporting & Inventory**
-- **Utilities & Helpers**
+- **Utilities**
 
 ---
 
-### Folder Structure
+### Scripts Overview
 
-- `scripts/App-Install/` → Application deployment scripts
-- `scripts/Windows-Updates/` → Update-related tasks and troubleshooting
-- `scripts/OS-Configuration/` → OS settings, features, registry changes
-- `scripts/Client-Health/` → SCCM client health checks and fixes
-- `scripts/Reporting/` → Detailed reporting scripts
-- `scripts/Utilities/` → General helper functions
+#### App-Install
+- `Remove-NewOutlook.ps1`
+- `Uninstall-DellSupportAssist.ps1`
+
+#### Windows-Updates
+- `Install-KB5003791.ps1`
+
+*(More scripts will be added over time)*
 
 ---
 
 ### How to Use
 
-All scripts are designed to run with **elevated (Administrator)** rights.
+All scripts should be run with **Administrator** privileges.
 
-Example:
 ```powershell
-# Run with verbose output
-.\scripts\App-Install\Install-CompanySoftware.ps1 -ComputerName "PC001" -Verbose
+# Example local run
+.\scripts\Windows-Updates\Install-KB5003791.ps1
 ```
 
 ---
