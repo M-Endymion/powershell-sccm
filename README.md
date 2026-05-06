@@ -2,37 +2,38 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of automation, reporting, maintenance, and troubleshooting scripts I’ve written and used in enterprise environments.
+A collection of real-world automation scripts I’ve developed and used in enterprise environments.
 
-### Purpose
-These scripts help with:
-- Automated software deployment and patching
-- Hardware/software inventory reporting
-- Client health checks and remediation
-- Maintenance tasks (log cleanup, cache clearing, etc.)
-- Compliance and security reporting
+### Main Categories
 
-### Scripts Included (so far)
+- **Software / Application Installation**
+- **Windows Update Management & Fixes**
+- **OS Configuration & Hardening**
+- **Client Health & Remediation**
+- **Reporting & Inventory**
+- **Utilities & Helpers**
 
-| Script Name                    | Description                                      | Status    |
-|--------------------------------|--------------------------------------------------|-----------|
-| `Update-ClientHealth.ps1`      | Checks and remediates SCCM client health         | Ready     |
-| `Export-SoftwareInventory.ps1` | Exports detailed software inventory reports      | Ready     |
-| `Clear-SCCMCache.ps1`          | Clears client cache safely                       | Ready     |
-| `...`                          | ...                                              | ...       |
+---
 
-*(Add more rows as you upload scripts)*
+### Folder Structure
+
+- `scripts/App-Install/` → Application deployment scripts
+- `scripts/Windows-Updates/` → Update-related tasks and troubleshooting
+- `scripts/OS-Configuration/` → OS settings, features, registry changes
+- `scripts/Client-Health/` → SCCM client health checks and fixes
+- `scripts/Reporting/` → Detailed reporting scripts
+- `scripts/Utilities/` → General helper functions
 
 ---
 
 ### How to Use
 
-Most scripts are designed to be run with administrative rights, either locally or remotely via PowerShell remoting.
+All scripts are designed to run with **elevated (Administrator)** rights.
 
 Example:
 ```powershell
-# Run a script with parameters
-.\Update-ClientHealth.ps1 -ComputerName "PC001" -Verbose
+# Run with verbose output
+.\scripts\App-Install\Install-CompanySoftware.ps1 -ComputerName "PC001" -Verbose
 ```
 
 ---
