@@ -4,12 +4,13 @@ This folder contains PowerShell scripts related to **installing and removing** s
 
 ### Scripts
 
-| Script Name                        | Description                                                                 | Category              |
-|------------------------------------|-----------------------------------------------------------------------------|-----------------------|
-| `Remove-NewOutlook.ps1`            | Removes the modern "New Outlook" AppX package and applies registry tattoo   | Application Removal   |
-| `Uninstall-DellSupportAssist.ps1`  | Uninstalls Dell SupportAssist while preserving specific Business versions   | Application Removal   |
-| `Install-Git.ps1`                  | Installs Git for Windows (standalone installer) with common components      | Application Install   |
-| `Uninstall-Git.ps1`                | Uninstalls Git using official uninstaller with registry tattoo cleanup      | Application Removal   |
+| Script Name                              | Description                                                                 | Category              |
+|------------------------------------------|-----------------------------------------------------------------------------|-----------------------|
+| `Remove-NewOutlook.ps1`                  | Removes the modern "New Outlook" AppX package and applies registry tattoo   | Application Removal   |
+| `Uninstall-DellSupportAssist.ps1`        | Uninstalls Dell SupportAssist while preserving specific Business versions   | Application Removal   |
+| `Install-Git.ps1`                        | Installs Git for Windows (standalone installer) with common components      | Application Install   |
+| `Uninstall-Git.ps1`                      | Uninstalls Git using official uninstaller with registry tattoo cleanup      | Application Removal   |
+| `Uninstall-SpreadsheetServerSuite.ps1`   | Uninstalls insightsoftware Spreadsheet Server Suite (requires Excel closed) | Application Removal   |
 
 ---
 
@@ -17,7 +18,7 @@ This folder contains PowerShell scripts related to **installing and removing** s
 
 - All scripts must be run with **Administrator** privileges.
 - Designed for SCCM / MECM deployment (including registry tattoos and detection markers).
-- For installation scripts: The required installer `.exe` must be placed in the same folder as the script.
+- For installation/uninstallation scripts that use `.exe` files: The required installer/uninstaller must be placed in the same folder as the script.
 
 ### Naming Convention
 - Scripts follow the `Verb-Noun.ps1` standard (`Install-`, `Remove-`, `Uninstall-`, etc.).
@@ -29,7 +30,7 @@ This folder contains PowerShell scripts related to **installing and removing** s
 .\Install-Git.ps1
 
 # Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\Uninstall-Git.ps1"
+Invoke-Command -ComputerName "PC001" -FilePath ".\Uninstall-SpreadsheetServerSuite.ps1"
 ```
 
 ---
