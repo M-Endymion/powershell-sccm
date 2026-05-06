@@ -1,29 +1,30 @@
 # Windows-Updates Scripts
 
-This folder contains PowerShell scripts for installing, managing, and troubleshooting Windows Updates.
+This folder contains PowerShell scripts for installing, managing, troubleshooting, and resetting Windows Updates.
 
 ### Scripts
 
-| Script Name                    | Description                                           | Category             |
-|--------------------------------|-------------------------------------------------------|----------------------|
-| `Install-KB5003791.ps1`        | Silently installs KB5003791 (x64) MSU package         | Windows Update       |
+| Script Name                        | Description                                                              | Category                  |
+|------------------------------------|--------------------------------------------------------------------------|---------------------------|
+| `Install-KB5003791.ps1`            | Silently installs KB5003791 (x64) MSU package                            | Windows Update Install    |
+| `Fix-HungWindowsUpdates.ps1`       | Resets Windows Update components (services + cache) to fix hung updates  | Troubleshooting / Reset   |
 
 ---
 
 ### Usage Guidelines
 
-- Run with **Administrator** rights.
-- Scripts are designed for SCCM / MECM deployment.
-- Most include logging and detection markers.
+- All scripts must be run with **Administrator** privileges.
+- Designed for SCCM / MECM deployment.
+- Scripts include logging and detection markers where appropriate.
 
 ### Examples
 
 ```powershell
 # Run locally
-.\Install-KB5003791.ps1
+.\Fix-HungWindowsUpdates.ps1
 
-# Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\Install-KB5003791.ps1"
+# Run remotely via SCCM or PowerShell remoting
+Invoke-Command -ComputerName "PC001" -FilePath ".\Fix-HungWindowsUpdates.ps1"
 ```
 
 ---
