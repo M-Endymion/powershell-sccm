@@ -1,35 +1,52 @@
 # Utilities Scripts
 
-This folder contains **general purpose** PowerShell utilities and helper scripts that don't fit into other specific categories.
+This folder contains **general-purpose** PowerShell scripts and helper tools that don’t fit neatly into other specific categories.
 
 ---
 
-### Current Scripts
+### Scripts
 
-*(This folder is currently empty — ready for new scripts)*
-
-**Planned / Suggested Scripts:**
-- `Get-RemoteComputerInventory.ps1` — WMI-based remote hardware/software inventory
-- `Export-BuiltInAppsList.ps1` — Exports installed Appx packages and capabilities
-- `Start-BatchInstall.ps1` — Interactive batch installer (already exists in Tools)
-- `ConvertFrom-BatchScript.ps1` — Helps convert old .bat files to PowerShell
-- `Search-EventLog.ps1` — Advanced event log searching with filtering
+| Script Name                        | Description                                                                 | Use Case |
+|------------------------------------|-----------------------------------------------------------------------------|----------|
+| `ConvertFrom-BatchScript.ps1`      | Helps convert legacy .bat/.cmd files to PowerShell (starting point only)    | Migration / Modernization |
+| `Search-EventLog.ps1`              | Advanced Event Log searching with powerful filtering and export options     | Troubleshooting |
 
 ---
 
-### Purpose
+### Usage Examples
 
-General helper scripts and tools for daily administration and troubleshooting.
+**Convert a Batch Script:**
+```powershell
+.\ConvertFrom-BatchScript.ps1 -BatchFilePath "C:\Scripts\OldInstall.bat"
+```
+***Search Event Logs:***
+```powershell
+# Basic usage
+.\Search-EventLog.ps1 -LogName Application -Level Error -Newest 50
+
+# Advanced usage
+.\Search-EventLog.ps1 -LogName System -Source "Microsoft-Windows-GroupPolicy" -EventID 7016 -ExportCSV
+```
 
 ---
 
 ### Best Practices
 
-- Keep scripts focused and reusable
-- Include proper help comments (`Get-Help`)
-- Add `-Verbose` and error handling
-- Use consistent Verb-Noun naming
+- ```ConvertFrom-BatchScript.ps1``` is a helper tool — always review and improve the generated script.
+- Search-EventLog.ps1 is very useful for troubleshooting during OSD or client health checks.
+- Keep general utilities here so they don’t clutter more specialized folders.
 
 ---
 
-This folder serves as a catch-all for useful utilities.
+### Suggested Future Scripts
+
+- ```Get-RemoteComputerInventory.ps1```
+- ```Test-NetworkConnectivity.ps1```
+- ```Export-SystemInfo.ps1```
+- ```Clean-TempFiles.ps1```
+
+---
+
+This folder serves as a catch-all for useful, reusable tools.
+
+---
