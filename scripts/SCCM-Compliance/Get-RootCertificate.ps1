@@ -1,72 +1,53 @@
 <#
 .SYNOPSIS
-    Discovery script - Checks if a specific Root or Trusted Publisher certificate exists.
+    Discovery script - Checks if a specific Root CA certificate exists.
 
 .DESCRIPTION
-    Used as a Discovery Script in SCCM/MECM Compliance Items to detect the presence of
-    an internal Root CA certificate by its Serial Number.
+    Used as the Discovery Script in SCCM/MECM Compliance Items.
+    Checks for the presence of a certificate by Thumbprint (recommended) or Serial Number.
 
 .NOTES
-    Author:      M-Endymion (Modern PowerShell rewrite)
-    Original:    Ioan Popovici
+    Author:      M-Endymion
     Version:     2.0
     Last Updated:2026-05-06
 #>
 
-# =============================================================================
-# Configuration - Update this section
-# =============================================================================
-$CertificateSerial = '00adb9a3cfdba68ff1'   # ← Change to your certificate's serial number
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$CertificateThumbprint   # Preferred method - more reliable than Serial Number
+)
 
 # =============================================================================
-# Main Logic
+# Main Script
 # =============================================================================
 try {
     $Stores = @('Root', 'TrustedPublisher')
-    $Results = @()
+    $Found = $false
 
     foreach ($StoreName in $Stores) {
-        try {
-            $Store = New-Object System.Security.Cryptography.X509Certificates.X509Store($StoreName, "LocalMachine")
-            $Store.Open("ReadOnly")
+        $Store = New-Object System.Security.Cryptography.X509Certificates.X509Store($StoreName, "LocalMachine")
+        $Store.Open("ReadOnly")
 
-            $Cert = $Store.Certificates | Where-Object { $_.SerialNumber -eq $CertificateSerial }
+        $Cert = $Store.Certificates | Where-Object { $_.Thumbprint -eq $CertificateThumbprint }
 
-            if ($Cert) {
-                $Results += [PSCustomObject]@{
-                    Store       = $StoreName
-                    Status      = "Found"
-                    Serial      = $Cert.SerialNumber
-                    Subject     = $Cert.Subject
-                    Thumbprint  = $Cert.Thumbprint
-                }
-            }
-            else {
-                $Results += [PSCustomObject]@{
-                    Store  = $StoreName
-                    Status = "Not Found"
-                }
-            }
-
-            $Store.Close()
+        if ($Cert) {
+            Write-Host "Certificate found in $StoreName store" -ForegroundColor Green
+            $Found = $true
         }
-        catch {
-            $Results += [PSCustomObject]@{
-                Store  = $StoreName
-                Status = "Error"
-            }
-        }
+
+        $Store.Close()
     }
 
-    # If certificate is found in any store → Compliant
-    if ($Results | Where-Object { $_.Status -eq "Found" }) {
+    # SCCM Compliance Rule should check for output = "Compliant"
+    if ($Found) {
         Write-Output "Compliant"
     }
     else {
-        # Return details for reporting (SCCM will show as Non-Compliant)
-        $Results | Format-Table -HideTableHeaders -AutoSize | Out-String | Write-Output
+        Write-Output "Non-Compliant"
     }
 }
 catch {
-    Write-Output "Error during certificate check"
+    Write-Output "Error"
+    Write-Error "Failed to check certificate: $($_.Exception.Message)"
 }
