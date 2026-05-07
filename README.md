@@ -1,8 +1,8 @@
 # PowerShell SCCM / MECM Scripts
 
-A professional collection of PowerShell scripts for **Microsoft Endpoint Configuration Manager** (SCCM / MECM) administration, deployment, and troubleshooting.
+A professional collection of PowerShell scripts for **Microsoft Endpoint Configuration Manager** (SCCM / MECM) administration, deployment, customization, and troubleshooting.
 
-Created and maintained by **M-Endymion**.
+Maintained by **M-Endymion**.
 
 ---
 
@@ -12,7 +12,7 @@ Created and maintained by **M-Endymion**.
 |---------------------------|--------------------------------------------------------------|
 | `scripts/App-Install`     | Application installation and uninstallation scripts          |
 | `scripts/Client-Health`   | ConfigMgr client health checks, repair, and maintenance      |
-| `scripts/OS-Configuration`| OS-level configuration and hardening scripts                 |
+| `scripts/OS-Configuration`| OS-level configuration, customization, and hardening         |
 | `scripts/OSD`             | Operating System Deployment (Task Sequence) scripts          |
 | `scripts/Reporting`       | Reporting and inventory scripts                              |
 | `scripts/SCCM-Automation` | Server-side automation and Status Filter Rule scripts        |
@@ -33,17 +33,18 @@ Created and maintained by **M-Endymion**.
 - `Uninstall-AdobeCreativeCloud.ps1`
 - `Uninstall-DellSupportAssist.ps1`
 - `Remove-NewOutlook.ps1`
-- And more...
 
-### **Client-Health** (New)
+### **Client-Health**
 Comprehensive ConfigMgr client health & repair scripts (modern replacement for `ConfigMgrStartup.vbs`).
 
-### **OSD**
-Scripts used during Operating System Deployment (Task Sequences).
+### **OS-Configuration**
+- `Set-PowerPlan.ps1`
+- `Set-LockScreenImage.ps1`
+- `Replace-Wallpaper.ps1`
 
 ### **Tools**
-- `Start-TSRerunTool.ps1` — GUI for re-running Task Sequence steps
-- `Start-BatchInstall.ps1` — Interactive installer with persistent settings
+- `Start-TSRerunTool.ps1`
+- `Start-BatchInstall.ps1`
 
 ### **SCCM-Automation**
 - `Update-DriverPackageXML.ps1`
@@ -62,20 +63,23 @@ Most scripts are designed to be deployed via **MECM Applications** or run as **T
 
 ---
 
+## About the Author
+
+**M-Endymion** (Jason Ray)  
+IT Professional specializing in Microsoft Endpoint Configuration Manager (MECM/SCCM), PowerShell automation, and enterprise deployment solutions.
+
+This repository serves as a **public portfolio** of my work — demonstrating clean, production-ready, well-documented scripting for real-world enterprise environments.
+
+- **LinkedIn**: [Jason Ray](https://www.linkedin.com/in/jason-ray-mecm/)
+- **GitHub Handle**: M-Endymion
+
+---
+
 ## Best Practices
 
 - Always test scripts in a lab environment first
 - Use consistent naming: `Verb-Noun.ps1`
 - Include proper logging and detection methods for MECM
-- Remove any proprietary information before sharing
-
----
-
-## Contributions & Feedback
-
-This repository is used as a **professional portfolio** showcasing clean, production-ready PowerShell scripting for enterprise environments.
-
-Feel free to suggest new scripts or improvements!
 
 ---
 
