@@ -11,8 +11,10 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 - **scripts/Reporting/** → Active Directory and inventory reporting scripts
 - **scripts/OSD/** → Scripts used during Operating System Deployment (Task Sequences)
 - **scripts/SCCM-Automation/** → Automation scripts for SCCM server-side tasks
+- **scripts/SCCM-Compliance/** → Discovery and Remediation scripts for Compliance Items
 - **scripts/SCCM-Queries/** → WQL queries for Collections and Reports
 - **scripts/Tools/** → General troubleshooting and utility tools
+- **scripts/Legacy/** → Older/deprecated scripts (for reference only)
 - **scripts/Templates/** → Reusable script templates
 
 ---
@@ -47,6 +49,7 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 - `Replace-Wallpaper.ps1`
 - `Set-StartMenuUserPins.ps1`
 - `Set-PowerPlan.ps1`
+- `Copy-ToAllUsersDesktops.ps1`
 - `Fix-IEError1509.ps1`
 - `Set-CMTraceAsDefaultLogViewer.ps1`
 - `New-OSDTattoo.ps1`
@@ -57,12 +60,18 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 #### SCCM-Compliance
 - `Get-RootCertificate.ps1` (Discovery)
 - `Add-RootCertificate.ps1` (Remediation)
+- `Get-VisualCRedistributables.ps1` (Discovery)
+- `Install-VisualCRedistributables.ps1` (Remediation)
 
 #### SCCM-Queries
 - `Query-OldMSIExecVersion.wql`
 
 #### Tools
-- `Start-TSRerunTool.ps1` → GUI tool to re-run Task Sequence items
+- `Start-TSRerunTool.ps1`
+- `Start-BatchInstall.ps1`
+
+#### Legacy
+- Old VBS/BAT scripts (for reference only)
 
 #### Templates
 - `PS_Script_Template.ps1`
@@ -84,10 +93,9 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 ### Requirements
 
 - PowerShell 5.1 or PowerShell 7+
-- Appropriate SCCM admin permissions
-- SCCM / MECM environment (recommended for detection rules)
-- Administrative privileges
+- Administrative / System context (especially for OSD)
 - ActiveDirectory module (for reporting scripts)
+- ConfigurationManager module (for SCCM-Automation scripts)
 - WinRM enabled (for remote inventory)
 
 ---
