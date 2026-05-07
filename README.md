@@ -2,7 +2,7 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation, deployment, troubleshooting, reporting, OSD, and SCCM automation scripts developed for enterprise environments.
+A collection of real-world automation, deployment, troubleshooting, reporting, OSD, and utility scripts developed for enterprise environments.
 
 ### Repository Structure
 
@@ -12,6 +12,7 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 - **scripts/OSD/** → Scripts used during Operating System Deployment (Task Sequences)
 - **scripts/SCCM-Automation/** → Automation scripts for SCCM server-side tasks
 - **scripts/SCCM-Queries/** → WQL queries for Collections and Reports
+- **scripts/Tools/** → General troubleshooting and utility tools
 - **scripts/Templates/** → Reusable script templates
 
 ---
@@ -41,15 +42,27 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 - `Get-RemoteComputerInventory.ps1`
 
 #### OSD
+- `Export-BuiltInAppsList.ps1`
+- `Remove-BuiltInApps.ps1`
+- `Replace-Wallpaper.ps1`
+- `Set-StartMenuUserPins.ps1`
+- `Set-PowerPlan.ps1`
 - `Fix-IEError1509.ps1`
 - `Set-CMTraceAsDefaultLogViewer.ps1`
 - `New-OSDTattoo.ps1`
 
 #### SCCM-Automation
-- `Update-DriverPackageXML.ps1` → Exports driver packages to XML and updates DPs
+- `Update-DriverPackageXML.ps1`
+
+#### SCCM-Compliance
+- `Get-RootCertificate.ps1` (Discovery)
+- `Add-RootCertificate.ps1` (Remediation)
 
 #### SCCM-Queries
 - `Query-OldMSIExecVersion.wql`
+
+#### Tools
+- `Start-TSRerunTool.ps1` → GUI tool to re-run Task Sequence items
 
 #### Templates
 - `PS_Script_Template.ps1`
@@ -58,14 +71,12 @@ A collection of real-world automation, deployment, troubleshooting, reporting, O
 
 ### How to Use
 
-All PowerShell scripts are designed to run with **Administrator** rights.
-
 ```powershell
-# Example - OSD Script
-.\scripts\OSD\New-OSDTattoo.ps1 -All
+# Example - OSD
+.\scripts\OSD\Set-PowerPlan.ps1 -PowerPlan High
 
-# Example - SCCM Automation
-.\scripts\SCCM-Automation\Update-DriverPackageXML.ps1
+# Example - Troubleshooting Tool
+.\scripts\Tools\Start-TSRerunTool.ps1
 ```
 
 ---
@@ -89,7 +100,7 @@ Test all scripts in a non-production environment first. Some scripts may need mi
 
 ### Credits & Contact
 
-Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel, Matthew Teegarden and others.
+Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel, Matthew Teegarden, Nickolaj Andersen, Michael Niehaus, and others.
 
 Maintained by M-Endymion
 
