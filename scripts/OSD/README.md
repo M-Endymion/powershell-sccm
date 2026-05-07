@@ -15,6 +15,7 @@ These scripts are typically run as part of a Task Sequence.
 | `Replace-Wallpaper.ps1`              | Replaces default Windows wallpaper (standard + 4K versions)                 | State Restore                      |
 | `Set-StartMenuUserPins.ps1`          | Pins specified applications to the Start Menu for new users (via Active Setup) | State Restore                      |
 | `Set-PowerPlan.ps1`                  | Sets Windows Power Plan (High Performance or Balanced)                      | WinPE or State Restore             |
+| `Copy-ToAllUsersDesktops.ps1`        | Copies files (e.g. shortcuts) to all user desktops + Default desktop        | State Restore                      |
 | `Fix-IEError1509.ps1`                | Removes problematic `iesqmdata_setup0.sqm` files                            | Post OS Apply                      |
 | `Set-CMTraceAsDefaultLogViewer.ps1`  | Copies CMTrace.exe and sets it as default .log viewer                       | WinPE or State Restore             |
 | `New-OSDTattoo.ps1`                  | Applies custom OSD tattoos (Registry + Environment Variables)               | State Restore                      |
@@ -23,6 +24,13 @@ These scripts are typically run as part of a Task Sequence.
 ---
 
 ### Usage Instructions
+
+#### Copy-ToAllUsersDesktops.ps1
+Copies a file (usually a shortcut) to every user’s desktop and the Default profile.
+
+```powershell
+.\Copy-ToAllUsersDesktops.ps1 -SourceFile ".\CompanyPortal.lnk"
+```
 
 #### Set-PowerPlan.ps1
 Sets the active power scheme.
