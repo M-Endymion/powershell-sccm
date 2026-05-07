@@ -2,13 +2,13 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation scripts developed for enterprise environments.
+A collection of real-world automation, deployment, and troubleshooting scripts developed for enterprise environments.
 
 ### Main Categories
 
 - **Software / Application Installation & Removal**
 - **Windows Update Management & Fixes**
-- **OS Configuration & Hardening**
+- **OS Configuration & Hardening** *(coming soon)*
 - **Client Health & Remediation**
 - **Reporting & Inventory**
 - **Utilities**
@@ -18,23 +18,35 @@ A collection of real-world automation scripts developed for enterprise environme
 ### Scripts Overview
 
 #### App-Install
-- `Remove-NewOutlook.ps1`
-- `Uninstall-DellSupportAssist.ps1`
+| Script Name                              | Description                                                                 |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| `Install-Git.ps1`                        | Installs Git for Windows (standalone)                                       |
+| `Install-MSTeams.ps1`                    | Installs Microsoft Teams (per-machine mode – great for WorkSpaces/VDI)     |
+| `Install-SnippingToolAndPhotos.ps1`      | Installs Snipping Tool + Microsoft Photos via winget                        |
+| `Remove-NewOutlook.ps1`                  | Removes the new Outlook AppX version                                        |
+| `Uninstall-DellSupportAssist.ps1`        | Uninstalls Dell SupportAssist (preserves Business versions)                 |
+| `Uninstall-Git.ps1`                      | Uninstalls Git with cleanup                                                 |
+| `Uninstall-SpreadsheetServerSuite.ps1`   | Uninstalls insightsoftware Spreadsheet Server Suite                         |
 
 #### Windows-Updates
-- `Install-KB5003791.ps1`
-
-*(More scripts will be added over time)*
+| Script Name                        | Description                                                              |
+|------------------------------------|--------------------------------------------------------------------------|
+| `Install-KB5003791.ps1`            | Silently installs KB5003791 MSU package                                  |
+| `Fix-HungWindowsUpdates.ps1`       | Full reset of Windows Update components to fix hung/stuck updates        |
+| `Reset-WindowsUpdate.ps1`          | Clears cache, resets registry, restarts services                         |
 
 ---
 
 ### How to Use
 
-All scripts should be run with **Administrator** privileges.
+All scripts are designed to run with **Administrator** rights.
 
 ```powershell
-# Example local run
-.\scripts\Windows-Updates\Install-KB5003791.ps1
+# Run locally
+.\scripts\App-Install\Install-MSTeams.ps1
+
+# Run remotely
+Invoke-Command -ComputerName "PC001" -FilePath ".\scripts\Windows-Updates\Reset-WindowsUpdate.ps1"
 ```
 
 ---
@@ -43,13 +55,13 @@ All scripts should be run with **Administrator** privileges.
 
 - PowerShell 5.1 or PowerShell 7+
 - Appropriate SCCM admin permissions
-- Modules: ConfigurationManager, ActiveDirectory (when needed)
+- SCCM / MECM environment (recommended for detection rules)
 
 ---
 
 ### Disclaimer
 
-These scripts were written for use in a production environment. Always test in a non-production environment first.
+Test all scripts in a non-production environment first. Some scripts may need minor adjustments for your specific environment.
 
 ---
 
