@@ -1,119 +1,82 @@
-# powershell-sccm
+# PowerShell SCCM / MECM Scripts
 
-**PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
+A professional collection of PowerShell scripts for **Microsoft Endpoint Configuration Manager** (SCCM / MECM) administration, deployment, and troubleshooting.
 
-A collection of real-world automation, deployment, troubleshooting, reporting, OSD, and utility scripts developed for enterprise environments.
-
-### Repository Structure
-
-- **scripts/App-Install/** → Application installation and removal scripts
-- **scripts/Windows-Updates/** → Windows Update installation and reset scripts
-- **scripts/Reporting/** → Active Directory and inventory reporting scripts
-- **scripts/OSD/** → Scripts used during Operating System Deployment (Task Sequences)
-- **scripts/SCCM-Automation/** → Automation scripts for SCCM server-side tasks
-- **scripts/SCCM-Compliance/** → Discovery and Remediation scripts for Compliance Items
-- **scripts/SCCM-Queries/** → WQL queries for Collections and Reports
-- **scripts/Tools/** → General troubleshooting and utility tools
-- **scripts/Legacy/** → Older/deprecated scripts (for reference only)
-- **scripts/Templates/** → Reusable script templates
+Created and maintained by **M-Endymion**.
 
 ---
 
-### Scripts Overview
+## Folder Structure
 
-#### App-Install
+| Folder                    | Purpose                                                      |
+|---------------------------|--------------------------------------------------------------|
+| `scripts/App-Install`     | Application installation and uninstallation scripts          |
+| `scripts/Client-Health`   | ConfigMgr client health checks, repair, and maintenance      |
+| `scripts/OS-Configuration`| OS-level configuration and hardening scripts                 |
+| `scripts/OSD`             | Operating System Deployment (Task Sequence) scripts          |
+| `scripts/Reporting`       | Reporting and inventory scripts                              |
+| `scripts/SCCM-Automation` | Server-side automation and Status Filter Rule scripts        |
+| `scripts/SCCM-Compliance` | Compliance Item (Discovery + Remediation) scripts            |
+| `scripts/SCCM-Queries`    | WQL queries for collections and reports                      |
+| `scripts/Tools`           | Standalone utilities and GUI tools                           |
+| `scripts/Utilities`       | General purpose utilities                                    |
+| `scripts/Legacy`          | Archived/old scripts (for reference only)                    |
+| `scripts/Templates`       | Script templates and best practice examples                  |
+
+---
+
+## Featured Folders & Scripts
+
+### **App-Install**
+- `Install-Git.ps1`, `Uninstall-Git.ps1`
 - `Install-7Zip.ps1`
-- `Install-Git.ps1`
-- `Install-MSTeams.ps1`
-- `Install-SnippingToolAndPhotos.ps1`
-- `Remove-NewOutlook.ps1`
+- `Uninstall-AdobeCreativeCloud.ps1`
 - `Uninstall-DellSupportAssist.ps1`
-- `Uninstall-Git.ps1`
-- `Uninstall-SpreadsheetServerSuite.ps1`
-- `Set-LockScreenImage.ps1`
+- `Remove-NewOutlook.ps1`
+- And more...
 
-#### Windows-Updates
-- `Install-KB5003791.ps1`
-- `Fix-HungWindowsUpdates.ps1`
-- `Reset-WindowsUpdate.ps1`
+### **Client-Health** (New)
+Comprehensive ConfigMgr client health & repair scripts (modern replacement for `ConfigMgrStartup.vbs`).
 
-#### Reporting
-- `Get-ADComputerActiveLast120Days.ps1`
-- `Get-ADComputerPasswordLastSet.ps1`
-- `Get-ADTombstoneComputers.ps1`
-- `Get-RemoteComputerInventory.ps1`
+### **OSD**
+Scripts used during Operating System Deployment (Task Sequences).
 
-#### OSD
-- `Export-BuiltInAppsList.ps1`
-- `Remove-BuiltInApps.ps1`
-- `Replace-Wallpaper.ps1`
-- `Set-StartMenuUserPins.ps1`
-- `Set-PowerPlan.ps1`
-- `Copy-ToAllUsersDesktops.ps1`
-- `Fix-IEError1509.ps1`
-- `Set-CMTraceAsDefaultLogViewer.ps1`
-- `New-OSDTattoo.ps1`
+### **Tools**
+- `Start-TSRerunTool.ps1` — GUI for re-running Task Sequence steps
+- `Start-BatchInstall.ps1` — Interactive installer with persistent settings
 
-#### SCCM-Automation
+### **SCCM-Automation**
 - `Update-DriverPackageXML.ps1`
-
-#### SCCM-Compliance
-- `Get-RootCertificate.ps1` (Discovery)
-- `Add-RootCertificate.ps1` (Remediation)
-- `Get-VisualCRedistributables.ps1` (Discovery)
-- `Install-VisualCRedistributables.ps1` (Remediation)
-
-#### SCCM-Queries
-- `Query-OldMSIExecVersion.wql`
-
-#### Tools
-- `Start-TSRerunTool.ps1`
-- `Start-BatchInstall.ps1`
-
-#### Legacy
-- Old VBS/BAT scripts (for reference only)
-
-#### Templates
-- `PS_Script_Template.ps1`
+- `Install-ConfigMgrHotfixes.ps1`
 
 ---
 
-### How to Use
+## How to Use
 
-```powershell
-# Example - OSD
-.\scripts\OSD\Set-PowerPlan.ps1 -PowerPlan High
+Most scripts are designed to be deployed via **MECM Applications** or run as **Task Sequence steps**.
 
-# Example - Troubleshooting Tool
-.\scripts\Tools\Start-TSRerunTool.ps1
-```
-
----
-
-### Requirements
-
-- PowerShell 5.1 or PowerShell 7+
-- Administrative / System context (especially for OSD)
-- ActiveDirectory module (for reporting scripts)
-- ConfigurationManager module (for SCCM-Automation scripts)
-- WinRM enabled (for remote inventory)
+- Run with **System** context when possible
+- Many scripts support `-WhatIf` and `-Fix` parameters
+- Logs are typically written to `C:\Windows\CCM\Logs\`
+- Registry tattoos are created under `HKLM:\SOFTWARE\Contoso\ApplicationTattoos\`
 
 ---
 
-### Disclaimer
+## Best Practices
 
-Test all scripts in a non-production environment first. Some scripts may need minor adjustments for your specific environment.
-
----
-
-### Credits & Contact
-
-Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel, Matthew Teegarden, Nickolaj Andersen, Michael Niehaus, and others.
-
-Maintained by M-Endymion
-
-Feel free to open Issues or Pull Requests if you have improvements!
+- Always test scripts in a lab environment first
+- Use consistent naming: `Verb-Noun.ps1`
+- Include proper logging and detection methods for MECM
+- Remove any proprietary information before sharing
 
 ---
 
-⭐ Star this repo if you find it useful!
+## Contributions & Feedback
+
+This repository is used as a **professional portfolio** showcasing clean, production-ready PowerShell scripting for enterprise environments.
+
+Feel free to suggest new scripts or improvements!
+
+---
+
+**Last Updated:** May 07, 2026
