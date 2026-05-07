@@ -12,6 +12,7 @@ This folder contains PowerShell scripts related to **installing and removing** s
 | `Uninstall-Git.ps1`                      | Uninstalls Git using official uninstaller with registry tattoo cleanup      | Application Removal       |
 | `Uninstall-SpreadsheetServerSuite.ps1`   | Uninstalls insightsoftware Spreadsheet Server Suite (requires Excel closed) | Application Removal       |
 | `Install-MSTeams.ps1`                    | Installs Microsoft Teams (per-machine mode) - optimized for Amazon WorkSpaces / VDI | Application Install       |
+| `Install-SnippingToolAndPhotos.ps1`      | Installs Microsoft Snipping Tool and Microsoft Photos via winget            | Application Install       |
 
 ---
 
@@ -19,7 +20,7 @@ This folder contains PowerShell scripts related to **installing and removing** s
 
 - All scripts must be run with **Administrator** privileges.
 - Designed for SCCM / MECM deployment (including registry tattoos and detection markers).
-- For installation scripts: Place the required installer `.exe` in the same folder as the script.
+- For scripts using `.exe` files: Place the required installer in the same folder as the script.
 
 ### Naming Convention
 - Scripts follow the `Verb-Noun.ps1` standard (`Install-`, `Remove-`, `Uninstall-`, etc.).
@@ -28,10 +29,10 @@ This folder contains PowerShell scripts related to **installing and removing** s
 
 ```powershell
 # Run locally
-.\Install-MSTeams.ps1
+.\Install-SnippingToolAndPhotos.ps1
 
 # Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\Uninstall-SpreadsheetServerSuite.ps1"
+Invoke-Command -ComputerName "PC001" -FilePath ".\Install-MSTeams.ps1"
 ```
 
 ---
