@@ -14,6 +14,7 @@ These scripts are typically run as part of a Task Sequence.
 | `Remove-BuiltInApps.ps1`             | Removes built-in apps and capabilities based on text files                  | State Restore                      |
 | `Replace-Wallpaper.ps1`              | Replaces default Windows wallpaper (standard + 4K versions)                 | State Restore                      |
 | `Set-StartMenuUserPins.ps1`          | Pins specified applications to the Start Menu for new users (via Active Setup) | State Restore                      |
+| `Set-PowerPlan.ps1`                  | Sets Windows Power Plan (High Performance or Balanced)                      | WinPE or State Restore             |
 | `Fix-IEError1509.ps1`                | Removes problematic `iesqmdata_setup0.sqm` files                            | Post OS Apply                      |
 | `Set-CMTraceAsDefaultLogViewer.ps1`  | Copies CMTrace.exe and sets it as default .log viewer                       | WinPE or State Restore             |
 | `New-OSDTattoo.ps1`                  | Applies custom OSD tattoos (Registry + Environment Variables)               | State Restore                      |
@@ -22,6 +23,17 @@ These scripts are typically run as part of a Task Sequence.
 ---
 
 ### Usage Instructions
+
+#### Set-PowerPlan.ps1
+Sets the active power scheme.
+
+```powershell
+# High Performance (recommended for OSD)
+.\Set-PowerPlan.ps1 -PowerPlan High
+
+# Balanced
+.\Set-PowerPlan.ps1 -PowerPlan Balanced
+```
 
 #### Set-StartMenuUserPins.ps1
 Pins applications to the Start Menu for every new user.
