@@ -2,14 +2,15 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation, deployment, troubleshooting, reporting, and query scripts developed for enterprise environments.
+A collection of real-world automation, deployment, troubleshooting, reporting, and OSD scripts developed for enterprise environments.
 
 ### Repository Structure
 
 - **scripts/App-Install/** → Application installation and removal scripts
 - **scripts/Windows-Updates/** → Windows Update installation and reset scripts
 - **scripts/Reporting/** → Active Directory and inventory reporting scripts
-- **scripts/SCCM-Queries/** → WQL queries for Collections, Reports, and Compliance
+- **scripts/OSD/** → Scripts used during Operating System Deployment (Task Sequences)
+- **scripts/SCCM-Queries/** → WQL queries for Collections and Reports
 - **scripts/Templates/** → Reusable script templates
 
 ---
@@ -25,6 +26,7 @@ A collection of real-world automation, deployment, troubleshooting, reporting, a
 - `Uninstall-DellSupportAssist.ps1`
 - `Uninstall-Git.ps1`
 - `Uninstall-SpreadsheetServerSuite.ps1`
+- `Set-LockScreenImage.ps1`
 
 #### Windows-Updates
 - `Install-KB5003791.ps1`
@@ -37,11 +39,14 @@ A collection of real-world automation, deployment, troubleshooting, reporting, a
 - `Get-ADTombstoneComputers.ps1`
 - `Get-RemoteComputerInventory.ps1`
 
+#### OSD
+- `Fix-IEError1509.ps1` → Fixes IE/Edge Error 1509 during imaging
+
 #### SCCM-Queries
-- `Query-OldMSIExecVersion.wql` → Finds computers with outdated `msiexec.exe`
+- `Query-OldMSIExecVersion.wql`
 
 #### Templates
-- `PS_Script_Template.ps1` → Modern reusable template
+- `PS_Script_Template.ps1`
 
 ---
 
@@ -50,11 +55,11 @@ A collection of real-world automation, deployment, troubleshooting, reporting, a
 All PowerShell scripts are designed to run with **Administrator** rights.
 
 ```powershell
-# Example - Application Install
-.\scripts\App-Install\Install-7Zip.ps1
+# Example - OSD Script
+.\scripts\OSD\Fix-IEError1509.ps1
 
-# Example - Remote Inventory
-.\scripts\Reporting\Get-RemoteComputerInventory.ps1 -ComputerName "PC001" -GridView
+# Example - Lock Screen during Task Sequence
+.\scripts\App-Install\Set-LockScreenImage.ps1
 ```
 
 ---
