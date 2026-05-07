@@ -2,13 +2,14 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation, deployment, troubleshooting, and reporting scripts developed for enterprise environments.
+A collection of real-world automation, deployment, troubleshooting, reporting, and query scripts developed for enterprise environments.
 
 ### Repository Structure
 
 - **scripts/App-Install/** → Application installation and removal scripts
 - **scripts/Windows-Updates/** → Windows Update installation and reset scripts
 - **scripts/Reporting/** → Active Directory and inventory reporting scripts
+- **scripts/SCCM-Queries/** → WQL queries for Collections, Reports, and Compliance
 - **scripts/Templates/** → Reusable script templates
 
 ---
@@ -36,20 +37,23 @@ A collection of real-world automation, deployment, troubleshooting, and reportin
 - `Get-ADTombstoneComputers.ps1`
 - `Get-RemoteComputerInventory.ps1`
 
+#### SCCM-Queries
+- `Query-OldMSIExecVersion.wql` → Finds computers with outdated `msiexec.exe`
+
 #### Templates
-- `PS_Script_Template.ps1` → Modern reusable template with logging and error handling
+- `PS_Script_Template.ps1` → Modern reusable template
 
 ---
 
 ### How to Use
 
-All scripts are designed to run with **Administrator** rights.
+All PowerShell scripts are designed to run with **Administrator** rights.
 
 ```powershell
-# Example
+# Example - Application Install
 .\scripts\App-Install\Install-7Zip.ps1
 
-# Remote inventory
+# Example - Remote Inventory
 .\scripts\Reporting\Get-RemoteComputerInventory.ps1 -ComputerName "PC001" -GridView
 ```
 
