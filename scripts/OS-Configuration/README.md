@@ -1,37 +1,56 @@
 # OS-Configuration Scripts
 
-This folder contains scripts for **operating system configuration**, hardening, and post-deployment settings.
+This folder contains scripts for **operating system configuration**, customization, and hardening — typically run during **OSD Task Sequences** (State Restore phase) or as baseline configuration Applications.
 
 ---
 
-### Current Scripts
+### Scripts
 
-*(This folder is currently empty — ready for new scripts)*
-
-**Planned / Suggested Scripts:**
-- `Set-PowerPlan.ps1` — Sets High Performance or Balanced power plan
-- `Set-LockScreenImage.ps1` — Configures custom lock screen image
-- `Replace-Wallpaper.ps1` — Replaces desktop wallpaper (including 4K variants)
-- `Configure-EdgeSettings.ps1` — Applies Microsoft Edge policies
-- `Disable-UnwantedServices.ps1` — Disables telemetry / unnecessary services
-- `Set-WindowsUpdateSettings.ps1` — Configures Windows Update behavior
-- `Enable-RDP.ps1` / `Disable-RDP.ps1` — Manages Remote Desktop settings
+| Script Name                    | Description                                                                 | Key Features |
+|--------------------------------|-----------------------------------------------------------------------------|--------------|
+| `Set-PowerPlan.ps1`            | Sets the active Windows Power Plan (High Performance or Balanced)           | Registry tattoo, supports `-WhatIf` |
+| `Set-LockScreenImage.ps1`      | Sets a custom Lock Screen image                                             | Copies image + applies policy |
+| `Replace-Wallpaper.ps1`        | Replaces default desktop wallpaper (standard + 4K variants)                | Takes ownership, handles 4K folder |
 
 ---
 
-### Purpose
+### Usage Examples
 
-These scripts are typically run during **OSD Task Sequences** (State Restore phase) or as part of a baseline configuration Application.
+**Set High Performance Power Plan:**
+```powershell
+.\Set-PowerPlan.ps1 -PowerPlan HighPerformance
+```
+**Set Custom Lock Screen:**
+```powershell
+.\Set-LockScreenImage.ps1 -ImageName "LockScreen.jpg"
+```
+***Replace Wallpaper (with 4K support):***
+```powershell
+.\Replace-Wallpaper.ps1
+```
+Place ```img0.jpg``` and a ```4K``` folder (with resolution variants) in the same directory as the script.
 
 ---
 
 ### Best Practices
 
-- Run in **System** context
-- Most scripts should create a registry tattoo for detection
-- Test thoroughly on both Windows 10 and Windows 11
-- Use `-WhatIf` support where possible
+- Run in **System** context (recommended for OSD)
+- All scripts create a registry tattoo under ```HKLM:\SOFTWARE\Contoso\ApplicationTattoos\```
+- All scripts create a detection marker in ```C:\Windows\CCM\Logs\```
+- Place required image files in the same folder as the script when packaging for SCCM
+- Test on both Windows 10 and Windows 11
 
 ---
 
-More OS configuration scripts will be added here.
+### Suggested Future Scripts
+
+- Configure-EdgeSettings.ps1
+- Disable-UnwantedServices.ps1
+- Set-WindowsUpdateSettings.ps1
+- Enable-RDP.ps1
+
+---
+
+This folder is dedicated to post-OS setup and customization tasks.
+
+---
