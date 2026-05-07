@@ -6,32 +6,21 @@ This folder contains **standalone utility tools** and GUI applications that help
 
 ### Scripts
 
-| Script Name                    | Description                                                                 | Type          |
-|--------------------------------|-----------------------------------------------------------------------------|---------------|
-| `Start-TSRerunTool.ps1`        | GUI tool to find, delete, and re-run Task Sequence scheduled items          | GUI Utility   |
+| Script Name                        | Description                                                                 | Type          |
+|------------------------------------|-----------------------------------------------------------------------------|---------------|
+| `Start-TSRerunTool.ps1`            | GUI tool to find, delete, and re-run Task Sequence scheduled items          | GUI Utility   |
+| `Start-BatchInstall.ps1`           | Interactive batch installer with persistent settings and progress display   | Interactive Tool |
 
 ---
 
-### Purpose of This Folder
-
-- General purpose troubleshooting tools
-- GUI-based utilities for common SCCM tasks
-- Scripts that don't fit neatly into OSD, Reporting, or Automation categories
+### Usage
 
 ---
-
-### How to Use
 
 #### Start-TSRerunTool.ps1
-
-A helpful GUI tool when you need to force a Task Sequence step to re-run.
-
-**Usage:**
 ```powershell
 .\Start-TSRerunTool.ps1
 ```
-
----
 
 ### Features:
 
@@ -40,13 +29,25 @@ A helpful GUI tool when you need to force a Task Sequence step to re-run.
 - Delete specific scheduled items
 - Restart the SMS Agent (CCMExec) service
 
----
-
 ### Common Use Cases:
 
 - Forcing a failed Task Sequence step to retry
 - Re-running Application or Package deployments
 - Troubleshooting stuck Task Sequence policies
+
+---
+
+### Start-BatchInstall.ps1
+```powershell
+.\Start-BatchInstall.ps1
+```
+This tool provides a menu-driven installation experience with the following options:
+
+- Install Type (Server/Client)
+- Installation Size (Full/Regular/Mini)
+- Show ReadMe when finished
+
+Settings are automatically saved between runs.
 
 ---
 
