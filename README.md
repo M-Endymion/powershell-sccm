@@ -19,7 +19,7 @@ Maintained by **M-Endymion**.
 | `scripts/SCCM-Compliance` | Compliance Item (Discovery + Remediation) scripts            |
 | `scripts/SCCM-Queries`    | WQL queries for collections and reports                      |
 | `scripts/Tools`           | Standalone utilities and GUI tools                           |
-| `scripts/Utilities`       | General purpose utilities                                    |
+| `scripts/Utilities`       | General purpose helper scripts                               |
 | `scripts/Legacy`          | Archived/old scripts (for reference only)                    |
 | `scripts/Templates`       | Script templates and best practice examples                  |
 
@@ -42,9 +42,13 @@ Comprehensive ConfigMgr client health & repair scripts (modern replacement for `
 - `Set-LockScreenImage.ps1`
 - `Replace-Wallpaper.ps1`
 
+### **Utilities** (New)
+- `ConvertFrom-BatchScript.ps1` — Helps convert old .bat files to PowerShell
+- `Search-EventLog.ps1` — Advanced event log searching and filtering
+
 ### **Tools**
-- `Start-TSRerunTool.ps1`
-- `Start-BatchInstall.ps1`
+- `Start-TSRerunTool.ps1` — GUI for re-running Task Sequence steps
+- `Start-BatchInstall.ps1` — Interactive batch installer
 
 ### **SCCM-Automation**
 - `Update-DriverPackageXML.ps1`
