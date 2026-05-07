@@ -2,7 +2,7 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation, deployment, troubleshooting, reporting, and OSD scripts developed for enterprise environments.
+A collection of real-world automation, deployment, troubleshooting, reporting, OSD, and SCCM automation scripts developed for enterprise environments.
 
 ### Repository Structure
 
@@ -10,6 +10,7 @@ A collection of real-world automation, deployment, troubleshooting, reporting, a
 - **scripts/Windows-Updates/** → Windows Update installation and reset scripts
 - **scripts/Reporting/** → Active Directory and inventory reporting scripts
 - **scripts/OSD/** → Scripts used during Operating System Deployment (Task Sequences)
+- **scripts/SCCM-Automation/** → Automation scripts for SCCM server-side tasks
 - **scripts/SCCM-Queries/** → WQL queries for Collections and Reports
 - **scripts/Templates/** → Reusable script templates
 
@@ -40,7 +41,12 @@ A collection of real-world automation, deployment, troubleshooting, reporting, a
 - `Get-RemoteComputerInventory.ps1`
 
 #### OSD
-- `Fix-IEError1509.ps1` → Fixes IE/Edge Error 1509 during imaging
+- `Fix-IEError1509.ps1`
+- `Set-CMTraceAsDefaultLogViewer.ps1`
+- `New-OSDTattoo.ps1`
+
+#### SCCM-Automation
+- `Update-DriverPackageXML.ps1` → Exports driver packages to XML and updates DPs
 
 #### SCCM-Queries
 - `Query-OldMSIExecVersion.wql`
@@ -56,10 +62,10 @@ All PowerShell scripts are designed to run with **Administrator** rights.
 
 ```powershell
 # Example - OSD Script
-.\scripts\OSD\Fix-IEError1509.ps1
+.\scripts\OSD\New-OSDTattoo.ps1 -All
 
-# Example - Lock Screen during Task Sequence
-.\scripts\App-Install\Set-LockScreenImage.ps1
+# Example - SCCM Automation
+.\scripts\SCCM-Automation\Update-DriverPackageXML.ps1
 ```
 
 ---
@@ -83,8 +89,7 @@ Test all scripts in a non-production environment first. Some scripts may need mi
 
 ### Credits & Contact
 
-Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel and others.
-Maintained by M-Endymion
+Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel, Matthew Teegarden and others.
 Maintained by M-Endymion
 
 Feel free to open Issues or Pull Requests if you have improvements!
