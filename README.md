@@ -2,38 +2,42 @@
 
 **PowerShell scripts for Microsoft Endpoint Configuration Manager (SCCM / MECM)**
 
-A collection of real-world automation, deployment, and troubleshooting scripts developed for enterprise environments.
+A collection of real-world automation, deployment, troubleshooting, and reporting scripts developed for enterprise environments.
 
-### Main Categories
+### Repository Structure
 
-- **Software / Application Installation & Removal**
-- **Windows Update Management & Fixes**
-- **OS Configuration & Hardening** *(coming soon)*
-- **Client Health & Remediation**
-- **Reporting & Inventory**
-- **Utilities**
+- **scripts/App-Install/** → Application installation and removal scripts
+- **scripts/Windows-Updates/** → Windows Update installation and reset scripts
+- **scripts/Reporting/** → Active Directory and inventory reporting scripts
+- **scripts/Templates/** → Reusable script templates
 
 ---
 
 ### Scripts Overview
 
 #### App-Install
-| Script Name                              | Description                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| `Install-Git.ps1`                        | Installs Git for Windows (standalone)                                       |
-| `Install-MSTeams.ps1`                    | Installs Microsoft Teams (per-machine mode – great for WorkSpaces/VDI)     |
-| `Install-SnippingToolAndPhotos.ps1`      | Installs Snipping Tool + Microsoft Photos via winget                        |
-| `Remove-NewOutlook.ps1`                  | Removes the new Outlook AppX version                                        |
-| `Uninstall-DellSupportAssist.ps1`        | Uninstalls Dell SupportAssist (preserves Business versions)                 |
-| `Uninstall-Git.ps1`                      | Uninstalls Git with cleanup                                                 |
-| `Uninstall-SpreadsheetServerSuite.ps1`   | Uninstalls insightsoftware Spreadsheet Server Suite                         |
+- `Install-7Zip.ps1`
+- `Install-Git.ps1`
+- `Install-MSTeams.ps1`
+- `Install-SnippingToolAndPhotos.ps1`
+- `Remove-NewOutlook.ps1`
+- `Uninstall-DellSupportAssist.ps1`
+- `Uninstall-Git.ps1`
+- `Uninstall-SpreadsheetServerSuite.ps1`
 
 #### Windows-Updates
-| Script Name                        | Description                                                              |
-|------------------------------------|--------------------------------------------------------------------------|
-| `Install-KB5003791.ps1`            | Silently installs KB5003791 MSU package                                  |
-| `Fix-HungWindowsUpdates.ps1`       | Full reset of Windows Update components to fix hung/stuck updates        |
-| `Reset-WindowsUpdate.ps1`          | Clears cache, resets registry, restarts services                         |
+- `Install-KB5003791.ps1`
+- `Fix-HungWindowsUpdates.ps1`
+- `Reset-WindowsUpdate.ps1`
+
+#### Reporting
+- `Get-ADComputerActiveLast120Days.ps1`
+- `Get-ADComputerPasswordLastSet.ps1`
+- `Get-ADTombstoneComputers.ps1`
+- `Get-RemoteComputerInventory.ps1`
+
+#### Templates
+- `PS_Script_Template.ps1` → Modern reusable template with logging and error handling
 
 ---
 
@@ -42,11 +46,11 @@ A collection of real-world automation, deployment, and troubleshooting scripts d
 All scripts are designed to run with **Administrator** rights.
 
 ```powershell
-# Run locally
-.\scripts\App-Install\Install-MSTeams.ps1
+# Example
+.\scripts\App-Install\Install-7Zip.ps1
 
-# Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\scripts\Windows-Updates\Reset-WindowsUpdate.ps1"
+# Remote inventory
+.\scripts\Reporting\Get-RemoteComputerInventory.ps1 -ComputerName "PC001" -GridView
 ```
 
 ---
@@ -56,6 +60,9 @@ Invoke-Command -ComputerName "PC001" -FilePath ".\scripts\Windows-Updates\Reset-
 - PowerShell 5.1 or PowerShell 7+
 - Appropriate SCCM admin permissions
 - SCCM / MECM environment (recommended for detection rules)
+- Administrative privileges
+- ActiveDirectory module (for reporting scripts)
+- WinRM enabled (for remote inventory)
 
 ---
 
@@ -67,8 +74,12 @@ Test all scripts in a non-production environment first. Some scripts may need mi
 
 ### Credits & Contact
 
+Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel and others.
+Maintained by M-Endymion
 Maintained by M-Endymion
 
 Feel free to open Issues or Pull Requests if you have improvements!
+
+---
 
 ⭐ Star this repo if you find it useful!
