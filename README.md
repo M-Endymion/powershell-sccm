@@ -90,6 +90,7 @@ Test all scripts in a non-production environment first. Some scripts may need mi
 ### Credits & Contact
 
 Some scripts converted and improved from original BAT/VBS scripts by SecretSquirrel, Matthew Teegarden and others.
+
 Maintained by M-Endymion
 
 Feel free to open Issues or Pull Requests if you have improvements!
