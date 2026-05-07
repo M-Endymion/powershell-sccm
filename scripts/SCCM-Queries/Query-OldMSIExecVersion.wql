@@ -1,0 +1,28 @@
+/*
+    Query Name:     Old MSIExec Version (< 3.1.4000.2435)
+    Purpose:        Identify computers with outdated Windows Installer
+    Use Case:       Create a collection for remediation / prerequisite deployments
+    Author:         M-Endymion (cleaned & documented version)
+    Last Updated:   2026-05-06
+*/
+
+SELECT 
+    SMS_R_System.ResourceId,
+    SMS_R_System.ResourceType,
+    SMS_R_System.Name AS [Computer Name],
+    SMS_R_System.SMSUniqueIdentifier,
+    SMS_R_System.ResourceDomainORWorkgroup,
+    SMS_R_System.Client,
+    SMS_G_System_SoftwareFile.FileName,
+    SMS_G_System_SoftwareFile.FileVersion,
+    SMS_G_System_SoftwareFile.FilePath
+FROM 
+    SMS_R_System 
+INNER JOIN 
+    SMS_G_System_SoftwareFile 
+    ON SMS_G_System_SoftwareFile.ResourceId = SMS_R_System.ResourceId
+WHERE 
+    SMS_G_System_SoftwareFile.FileName = "msiexec.exe"
+    AND SMS_G_System_SoftwareFile.FileVersion < "3.1.4000.2435"
+ORDER BY 
+    SMS_G_System_SoftwareFile.FileVersion ASC
