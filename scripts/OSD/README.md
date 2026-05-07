@@ -13,6 +13,7 @@ These scripts are typically run as part of a Task Sequence.
 | `Export-BuiltInAppsList.ps1`         | Exports installed Appx apps and Capabilities to text files                  | Reference machine / Post OS        |
 | `Remove-BuiltInApps.ps1`             | Removes built-in apps and capabilities based on text files                  | State Restore                      |
 | `Replace-Wallpaper.ps1`              | Replaces default Windows wallpaper (standard + 4K versions)                 | State Restore                      |
+| `Set-StartMenuUserPins.ps1`          | Pins specified applications to the Start Menu for new users (via Active Setup) | State Restore                      |
 | `Fix-IEError1509.ps1`                | Removes problematic `iesqmdata_setup0.sqm` files                            | Post OS Apply                      |
 | `Set-CMTraceAsDefaultLogViewer.ps1`  | Copies CMTrace.exe and sets it as default .log viewer                       | WinPE or State Restore             |
 | `New-OSDTattoo.ps1`                  | Applies custom OSD tattoos (Registry + Environment Variables)               | State Restore                      |
@@ -22,24 +23,33 @@ These scripts are typically run as part of a Task Sequence.
 
 ### Usage Instructions
 
+#### Set-StartMenuUserPins.ps1
+Pins applications to the Start Menu for every new user.
+
+**During Task Sequence (recommended):**
+- Add a "Run PowerShell Script" step:
+  - Script name: `Set-StartMenuUserPins.ps1`
+  - Parameters: `-RunMode Stage`
+
+Edit the `$AppsToPin` array in the script to change which apps are pinned.
+
 #### Replace-Wallpaper.ps1
 - Place your custom `img0.jpg` in the same folder as the script.
-- (Optional) Create a subfolder named `4K` and add your high-resolution files (e.g. `img0_3840x2160.jpg`, `img0_2560x1600.jpg`, etc.).
-- Add the script to your Task Sequence (System context).
+- (Optional) Create a `4K` subfolder with high-resolution files.
 
-#### Export-BuiltInAppsList.ps1 + Remove-BuiltInApps.ps1 (Recommended Workflow)
+#### Export-BuiltInAppsList.ps1 + Remove-BuiltInApps.ps1
 1. Run `Export-BuiltInAppsList.ps1` on a reference machine.
-2. Edit the generated `appsXXXXX.txt` and `CapabilitiesXXXXX.txt` files (remove items you want to **keep**).
-3. Run `Remove-BuiltInApps.ps1` during the Task Sequence.
+2. Edit the generated `appsXXXXX.txt` and `CapabilitiesXXXXX.txt` (remove items you want to **keep**).
+3. Run `Remove-BuiltInApps.ps1` in the Task Sequence.
 
 ---
 
 ### Best Practices for OSD Scripts
 
-- Run with **System** context (highest privileges)
+- Run with **System** context
 - Use `Continue on error = No` for critical fixes
-- Include supporting files (`.jpg`, `.txt`, `CMTrace.exe`, etc.) in the same package
-- Always test thoroughly in a lab environment
+- Include supporting files (images, text lists, CMTrace.exe, etc.) in the same package
+- Always test thoroughly in a lab environment first
 
 ---
 
