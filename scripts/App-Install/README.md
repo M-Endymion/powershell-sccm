@@ -1,39 +1,56 @@
 # App-Install Scripts
 
-This folder contains PowerShell scripts related to **installing and removing** software/applications.
+This folder contains scripts for **installing and uninstalling applications** via MECM/SCCM.
+
+---
 
 ### Scripts
 
-| Script Name                              | Description                                                                 | Category                  |
-|------------------------------------------|-----------------------------------------------------------------------------|---------------------------|
-| `Remove-NewOutlook.ps1`                  | Removes the modern "New Outlook" AppX package and applies registry tattoo   | Application Removal       |
-| `Uninstall-DellSupportAssist.ps1`        | Uninstalls Dell SupportAssist while preserving specific Business versions   | Application Removal       |
-| `Install-Git.ps1`                        | Installs Git for Windows (standalone installer) with common components      | Application Install       |
-| `Uninstall-Git.ps1`                      | Uninstalls Git using official uninstaller with registry tattoo cleanup      | Application Removal       |
-| `Uninstall-SpreadsheetServerSuite.ps1`   | Uninstalls insightsoftware Spreadsheet Server Suite (requires Excel closed) | Application Removal       |
-| `Install-MSTeams.ps1`                    | Installs Microsoft Teams (per-machine mode) - optimized for Amazon WorkSpaces / VDI | Application Install       |
-| `Install-SnippingToolAndPhotos.ps1`      | Installs Microsoft Snipping Tool and Microsoft Photos via winget            | Application Install       |
-| `Install-7Zip.ps1`                       | Installs 7-Zip (auto-detects 32-bit or 64-bit OS)                           | Application Install       |
+| Script Name                              | Description                                                                 | Type          |
+|------------------------------------------|-----------------------------------------------------------------------------|---------------|
+| `Install-Git.ps1`                        | Installs Git with custom components and registry tattoo                    | Installer     |
+| `Uninstall-Git.ps1`                      | Uninstalls Git and cleans up registry tattoo                               | Uninstaller   |
+| `Install-7Zip.ps1`                       | Installs 7-Zip (auto-detects x64/x86)                                      | Installer     |
+| `Uninstall-AdobeCreativeCloud.ps1`       | Uninstalls all Adobe Creative Cloud apps using official uninstaller         | Uninstaller   |
+| `Uninstall-DellSupportAssist.ps1`        | Uninstalls Dell SupportAssist while preserving Business versions            | Uninstaller   |
+| `Remove-NewOutlook.ps1`                  | Removes the new Outlook app (Microsoft.OutlookForWindows)                   | Uninstaller   |
+| `Install-MSTeams.ps1`                    | Installs Microsoft Teams (optimized for Amazon WorkSpaces)                 | Installer     |
+| `Install-SnippingToolAndPhotos.ps1`      | Installs Snipping Tool + Microsoft Photos via winget                        | Installer     |
 
 ---
 
-### Usage Guidelines
+### Usage Examples
 
-- All scripts must be run with **Administrator** privileges.
-- Designed for SCCM / MECM deployment (including registry tattoos and detection markers).
-- For scripts using `.msi` or `.exe` files: Place the required installer file(s) in the same folder as the script.
+---
 
-### Naming Convention
-- Scripts follow the `Verb-Noun.ps1` standard (`Install-`, `Remove-`, `Uninstall-`, etc.).
-
-### Examples
-
+**Uninstall Adobe Creative Cloud:**
 ```powershell
-# Run locally
-.\Install-7Zip.ps1
-
-# Run remotely
-Invoke-Command -ComputerName "PC001" -FilePath ".\Install-MSTeams.ps1"
+.\Uninstall-AdobeCreativeCloud.ps1
 ```
 
 ---
+
+**Install Git:**
+```powershell
+.\Install-Git.ps1
+```
+
+---
+
+**Remove New Outlook:**
+```powershell
+.\Remove-NewOutlook.ps1
+```
+
+---
+
+### Best Practices
+
+- Place any required ```.exe```, ```.msi```, or ```.msu``` files in the same folder as the script when creating the SCCM Application
+- All scripts create a registry tattoo under ```HKLM:\SOFTWARE\Contoso\ApplicationTattoos\```
+- All scripts create a detection marker in ```C:\Windows\CCM\Logs\```
+- Use ```-WhatIf``` to simulate actions where supported
+
+---
+
+More application install/uninstall scripts will be added here as needed.
