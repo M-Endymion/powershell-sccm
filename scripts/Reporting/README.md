@@ -32,8 +32,6 @@ $Computers = Get-Content "C:\Temp\computers.txt"
 .\Get-RemoteComputerInventory.ps1 -ComputerName $Computers -GridView
 ```
 
----
-
 ### Requirements:
 
 WinRM must be enabled on target computers (Enable-PSRemoting)
