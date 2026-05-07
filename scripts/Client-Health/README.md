@@ -3,38 +3,49 @@
 This folder contains scripts for **monitoring, maintaining, and repairing** the Microsoft Endpoint Configuration Manager (MECM/SCCM) client.
 
 ---
-
 ### Scripts
 
+#### Client Health Orchestrators
 | Script Name                                | Description                                                                 |
 |--------------------------------------------|-----------------------------------------------------------------------------|
-| `Invoke-ConfigMgrClientHealthFull.ps1`     | **Main orchestrator** — runs all health checks and fixes                    |
-| `Invoke-ConfigMgrClientHealth.ps1`         | Flexible health runner                                                      |
+| `Invoke-ConfigMgrClientHealthFull.ps1`     | Main orchestrator — runs comprehensive client health checks and fixes       |
+| `Invoke-ConfigMgrClientHealth.ps1`         | Flexible client health runner                                               |
 | `Invoke-ConfigMgrClientMaintenance.ps1`    | Maintenance-focused orchestrator                                            |
-| `Check-ConfigMgrServices.ps1`              | Checks and repairs critical services (CCMExec, WMI)                         |
-| `Check-ConfigMgrCache.ps1`                 | Validates and sets client cache size                                        |
-| `Check-LocalAdminMembership.ps1`           | Ensures required accounts are in local Administrators group                 |
-| `Check-ClientAssignment.ps1`               | Verifies correct site assignment                                            |
-| `Check-ConfigMgrClientVersion.ps1`         | Checks client version and can trigger upgrade                               |
-| `Check-ConfigMgrPrerequisites.ps1`         | Checks WMI, Admin$ share, and other prerequisites                          |
-| `Repair-ConfigMgrClient.ps1`               | Standard client repair                                                      |
-| `Repair-ConfigMgrClientFull.ps1`           | Full client reinstall (last resort)                                         |
-| `Trigger-ConfigMgrClientReinstall.ps1`     | Triggers a complete client reinstall                                        |
-| `Install-ConfigMgrHotfixes.ps1`            | Installs .msp hotfixes                                                      |
-| `Invoke-ConfigMgrLogMaintenance.ps1`       | Cleans up old client log files                                              |
+
+#### Individual Health Checks
+| Script Name                              | Description                                                                 |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| `Check-ConfigMgrServices.ps1`            | Checks and fixes critical services (CCMExec, WMI, etc.)                     |
+| `Check-ConfigMgrCache.ps1`               | Checks and sets the ConfigMgr client cache size                             |
+| `Check-LocalAdminMembership.ps1`         | Checks and adds accounts to the local Administrators group                  |
+| `Check-ClientAssignment.ps1`             | Verifies client site assignment                                             |
+| `Check-ConfigMgrClientVersion.ps1`       | Checks client version and can trigger upgrade                               |
+| `Check-ConfigMgrPrerequisites.ps1`       | Checks critical prerequisites (WMI, Admin$, etc.)                           |
+
+#### Repair & Remediation
+| Script Name                              | Description                                                                 |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| `Repair-ConfigMgrClient.ps1`             | Performs a standard client repair                                           |
+| `Repair-ConfigMgrClientFull.ps1`         | Full client reinstall (last resort)                                         |
+| `Trigger-ConfigMgrClientReinstall.ps1`   | Triggers a fresh client reinstall                                           |
+
+#### Utilities
+| Script Name                              | Description                                                                 |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| `Invoke-ConfigMgrLogMaintenance.ps1`     | Cleans up old ConfigMgr log files                                           |
 
 ---
 
-### Recommended Usage
+### How to Use
 
-**Run Full Health Check:**
+**Full Health Check (Recommended):**
 ```powershell
 .\Invoke-ConfigMgrClientHealthFull.ps1 -FullRepair
 ```
-
-**Run Individual Check:**
+**Individual Checks:**
 ```powershell
 .\Check-ConfigMgrServices.ps1 -Fix
+.\Check-ConfigMgrCache.ps1 -Fix -DesiredCacheSizeMB 8192
 ```
 
 ---
@@ -48,4 +59,8 @@ This folder contains scripts for **monitoring, maintaining, and repairing** the 
 
 ___
 
-These scripts are modern replacements for the old ```ConfigMgrStartup.vbs```.
+### Original Inspiration
+
+These scripts are modern replacements for parts of the classic ```ConfigMgrStartup.vbs``` by Jason Sandys.
+
+They are broken into focused, maintainable modules rather than one giant script.
