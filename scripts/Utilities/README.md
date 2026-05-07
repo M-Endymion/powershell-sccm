@@ -19,7 +19,7 @@ This folder contains **general-purpose** PowerShell scripts and helper tools tha
 ```powershell
 .\ConvertFrom-BatchScript.ps1 -BatchFilePath "C:\Scripts\OldInstall.bat"
 ```
-***Search Event Logs:***
+**Search Event Logs:**
 ```powershell
 # Basic usage
 .\Search-EventLog.ps1 -LogName Application -Level Error -Newest 50
