@@ -1,3 +1,4 @@
+![PowerShell SCCM Portfolio](https://github.com/M-Endymion/powershell-sccm/blob/main/thumbnail.png)
 # PowerShell SCCM / MECM Scripts
 
 A professional collection of PowerShell scripts for **Microsoft Endpoint Configuration Manager** (SCCM / MECM) administration, deployment, customization, and troubleshooting.
