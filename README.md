@@ -2,7 +2,7 @@
 
 # PowerShell SCCM / MECM Scripts
 
-A comprehensive set of PowerShell scripts I’ve built for **Microsoft Endpoint Configuration Manager (MECM/SCCM)••.
+A comprehensive set of PowerShell scripts I’ve built for Microsoft Endpoint Configuration Manager (MECM/SCCM).
 
 Includes client health & repair tools, OSD Task Sequence scripts, OS configuration, automation utilities, and more. Focuses on clean code, strong logging, and real-world enterprise use.
 
