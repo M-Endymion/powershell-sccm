@@ -44,6 +44,9 @@ Comprehensive ConfigMgr client health & repair scripts (modern replacement for `
 - `Set-LockScreenImage.ps1`
 - `Replace-Wallpaper.ps1`
 
+### **MacOS** (New)
+- `MacOS-Setup-and-Compliance.ps1` — System info, Homebrew tools, user auditing, M365/Intune readiness, Jamf integration, and professional reports.
+
 ### **Utilities** (New)
 - `ConvertFrom-BatchScript.ps1` — Helps convert old .bat files to PowerShell
 - `Search-EventLog.ps1` — Advanced event log searching and filtering
