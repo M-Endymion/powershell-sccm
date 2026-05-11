@@ -1,39 +1,44 @@
 # MacOS Scripts
 
-This folder contains scripts and tools for **macOS administration, setup, and compliance** — primarily designed for enterprise environments using Microsoft Intune, Jamf, or hybrid management.
+This folder contains enterprise-focused scripts for **macOS provisioning, hardening, compliance, and management**.
+
+Designed for hybrid environments (Intune, Jamf Pro, or mixed fleets).
 
 ---
 
 ### Scripts
 
-| Script Name                          | Description                                                                 | Status |
-|--------------------------------------|-----------------------------------------------------------------------------|--------|
-| `MacOS-Setup-and-Compliance.ps1`     | Main script: System info, Homebrew tools, security checks, and HTML report | Complete |
-
----
-
-### Purpose
-
-These scripts help bridge the gap between **Windows-centric** SCCM/MECM environments and **macOS** fleet management. They are especially useful for:
-
-- Initial device provisioning
-- Compliance auditing
-- Standardization across Mac fleets
-- Intune + Jamf hybrid environments
+| Script Name                          | Description                                                                 | Key Features |
+|--------------------------------------|-----------------------------------------------------------------------------|--------------|
+| `MacOS-Setup-and-Compliance.ps1`     | Main all-in-one tool for macOS setup and compliance auditing               | Homebrew install, User auditing, M365/Intune readiness, Jamf integration, HTML + JSON reports, Compliance scoring |
 
 ---
 
 ### Usage
 
-Run with PowerShell 7+ on macOS:
-
 ```powershell
 # Basic compliance check + report
 ./MacOS-Setup-and-Compliance.ps1
 
-# Full setup (install tools + apply settings)
-./MacOS-Setup-and-Compliance.ps1 -InstallTools -ApplySecuritySettings
+# Full setup (recommended for new devices)
+./MacOS-Setup-and-Compliance.ps1 -FullSetup
+
+# Run Jamf inventory update as well
+./MacOS-Setup-and-Compliance.ps1 -FullSetup -RunJamfRecon
 ```
+
+---
+
+## Features
+
+- System Information collection
+- Homebrew installation + common tools & apps
+- Local User Auditing (admin rights, enabled/disabled accounts)
+- Microsoft 365 / Intune Readiness checks
+- Jamf Pro status detection and optional jamf recon
+- Security & Compliance checks (FileVault, Firewall, SIP, etc.)
+- Compliance Score (0–100) with color-coded summary
+- Professional HTML + JSON reports saved to Desktop
 
 ---
 
@@ -46,12 +51,21 @@ Run with PowerShell 7+ on macOS:
 
 ---
 
+## Ideal For
+
+- macOS fleet onboarding / provisioning
+- Compliance auditing for Intune or Jamf environments
+- Security baseline enforcement
+- Hybrid Windows + macOS management teams
+
+---
+
 ## Future Scripts (Planned)
 
-- Set-MacOSSecurityBaseline.ps1
-- Install-MacOSCorporateApps.ps1
-- Invoke-MacOSIntuneCompliance.ps1
-- Jamf-Integration-Tools.ps1
+- Automated remediation options
+- Configuration profiles deployment
+- Microsoft Defender for Endpoint integration
+- Custom policy enforcement
 
 ---
 
