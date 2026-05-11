@@ -15,6 +15,7 @@ Includes client health & repair tools, OSD Task Sequence scripts, OS configurati
 | `scripts/App-Install`     | Application installation and uninstallation scripts          |
 | `scripts/Client-Health`   | ConfigMgr client health checks, repair, and maintenance      |
 | `scripts/OS-Configuration`| OS-level configuration, customization, and hardening         |
+| `scripts/MacOS`           | macOS provisioning, compliance, Intune/Jamf readiness        |
 | `scripts/OSD`             | Operating System Deployment (Task Sequence) scripts          |
 | `scripts/Reporting`       | Reporting and inventory scripts                              |
 | `scripts/SCCM-Automation` | Server-side automation and Status Filter Rule scripts        |
