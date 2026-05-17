@@ -1,10 +1,26 @@
-![PowerShell SCCM Portfolio](https://github.com/M-Endymion/powershell-sccm/blob/main/thumbnail.png)
+<div align="center">
+  <img src="https://github.com/M-Endymion/powershell-sccm/blob/main/thumbnail.png" alt="PowerShell SCCM Portfolio" width="100%" />
+</div>
 
-# PowerShell SCCM / MECM Scripts
+<br>
 
-A comprehensive set of PowerShell scripts I’ve built for Microsoft Endpoint Configuration Manager (MECM/SCCM).
+# PowerShell SCCM / MECM Automation
 
-Includes client health & repair tools, OSD Task Sequence scripts, OS configuration, automation utilities, and more. Focuses on clean code, strong logging, and real-world enterprise use.
+**Production-ready PowerShell scripts for Microsoft Endpoint Configuration Manager (MECM/SCCM)**
+
+Clean code • Strong logging • Real-world enterprise focus
+
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![MECM](https://img.shields.io/badge/MECM-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+---
+
+## Why These Scripts?
+
+Modern replacement for legacy VBS scripts with better error handling, logging, `-WhatIf` support, and MECM-friendly detection rules. Used daily in enterprise environments for client health, application deployment, OS configuration, and hybrid management.
 
 ---
 
@@ -16,85 +32,72 @@ Includes client health & repair tools, OSD Task Sequence scripts, OS configurati
 | `scripts/Client-Health`   | ConfigMgr client health checks, repair, and maintenance      |
 | `scripts/OS-Configuration`| OS-level configuration, customization, and hardening         |
 | `scripts/MacOS`           | macOS provisioning, compliance, Intune/Jamf readiness        |
-| `scripts/Ubuntu`          | Ubuntu Server quick deployment (Docker, Portainer, Tailscale)|
+| `scripts/Ubuntu`          | Ubuntu Server quick deployment (Docker, Portainer, etc.)     |
 | `scripts/OSD`             | Operating System Deployment (Task Sequence) scripts          |
 | `scripts/Reporting`       | Reporting and inventory scripts                              |
 | `scripts/SCCM-Automation` | Server-side automation and Status Filter Rule scripts        |
 | `scripts/SCCM-Compliance` | Compliance Item (Discovery + Remediation) scripts            |
-| `scripts/SCCM-Queries`    | WQL queries for collections and reports                      |
 | `scripts/Tools`           | Standalone utilities and GUI tools                           |
 | `scripts/Utilities`       | General purpose helper scripts                               |
-| `scripts/Legacy`          | Archived/old scripts (for reference only)                    |
-| `scripts/Templates`       | Script templates and best practice examples                  |
+| `scripts/Templates`       | Script templates and best practices                          |
+
+*(Legacy folder kept for reference only)*
 
 ---
 
-## Featured Folders & Scripts
+## Featured Scripts & Tools
+
+### **Client-Health** (Most Popular)
+Comprehensive health checks and repair — modern replacement for `ConfigMgrStartup.vbs`
 
 ### **App-Install**
-- `Install-Git.ps1`, `Uninstall-Git.ps1`
-- `Install-7Zip.ps1`
+- `Install-Git.ps1`, `Install-7Zip.ps1`
 - `Uninstall-AdobeCreativeCloud.ps1`
 - `Uninstall-DellSupportAssist.ps1`
 - `Remove-NewOutlook.ps1`
 
-### **Client-Health**
-Comprehensive ConfigMgr client health & repair scripts (modern replacement for `ConfigMgrStartup.vbs`).
-
-### **OS-Configuration**
-- `Set-PowerPlan.ps1`
-- `Set-LockScreenImage.ps1`
-- `Replace-Wallpaper.ps1`
-
 ### **MacOS**
-- `MacOS-Setup-and-Compliance.ps1` — System info, Homebrew tools, user auditing, M365/Intune readiness, Jamf integration, and professional reports.
+- `MacOS-Setup-and-Compliance.ps1` — Detailed system report, Homebrew tools, M365/Intune readiness, Jamf integration
 
-### **Ubuntu** (New)
-- `Ubuntu-Server-QuickDeploy.sh` — Docker + Portainer + Tailscale + Watchtower + Fail2Ban for homelab servers.
-
-### **Utilities** (New)
-- `ConvertFrom-BatchScript.ps1` — Helps convert old .bat files to PowerShell
-- `Search-EventLog.ps1` — Advanced event log searching and filtering
-
-### **Tools**
+### **Tools (GUI)**
+- `Start-BatchInstall.ps1` — Interactive batch application installer
 - `Start-TSRerunTool.ps1` — GUI for re-running Task Sequence steps
-- `Start-BatchInstall.ps1` — Interactive batch installer
 
-### **SCCM-Automation**
-- `Update-DriverPackageXML.ps1`
-- `Install-ConfigMgrHotfixes.ps1`
+### **Utilities**
+- `ConvertFrom-BatchScript.ps1` — Legacy batch → PowerShell converter
+- `Ubuntu-Server-QuickDeploy.sh` — One-click homelab server setup
 
 ---
 
 ## How to Use
 
-Most scripts are designed to be deployed via **MECM Applications** or run as **Task Sequence steps**.
+- **Run as System** context in MECM Applications or Task Sequences
+- Many scripts support `-WhatIf`, `-Fix`, and `-Verbose`
+- Logs written to `C:\Windows\CCM\Logs\` or custom path
+- Registry tattoos under `HKLM:\SOFTWARE\Contoso\ApplicationTattoos\`
 
-- Run with **System** context when possible
-- Many scripts support `-WhatIf` and `-Fix` parameters
-- Logs are typically written to `C:\Windows\CCM\Logs\`
-- Registry tattoos are created under `HKLM:\SOFTWARE\Contoso\ApplicationTattoos\`
+**Quick Start:** Clone the repo and explore the `Templates` folder for best practices.
 
 ---
 
 ## About the Author
 
-**M-Endymion** (Jason Ray)  
-IT Professional specializing in Microsoft Endpoint Configuration Manager (MECM/SCCM), PowerShell automation, and enterprise deployment solutions.
+**Jason Ray (M-Endymion)**  
+IT Professional specializing in **MECM/SCCM**, PowerShell automation, hybrid endpoint management, and enterprise deployments.
 
-This repository serves as a **public portfolio** of my work — demonstrating clean, production-ready, well-documented scripting for real-world enterprise environments.
+This repository is my **professional portfolio** — every script is built for production use with focus on reliability and maintainability.
 
 - **LinkedIn**: [Jason Ray](https://www.linkedin.com/in/jason-ray-mecm/)
-- **GitHub Handle**: M-Endymion
+- **Open to new opportunities** in Endpoint Management / Automation Engineering
 
 ---
 
-## Best Practices
-
-- Always test scripts in a lab environment first
-- Use consistent naming: `Verb-Noun.ps1`
-- Include proper logging and detection methods for MECM
+**Last Updated:** May 17, 2026
 
 ---
 
-**Last Updated:** May 07, 2026
+## Best Practices Demonstrated
+- Verb-Noun naming convention
+- Comprehensive logging and error handling
+- Proper MECM detection methods
+- Cross-platform awareness (Windows + macOS)
