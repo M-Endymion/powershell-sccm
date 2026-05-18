@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/M-Endymion/powershell-sccm/blob/main/thumbnail.png" alt="PowerShell SCCM Portfolio" width="100%" />
 </div>
-
+ 
 <br>
 
 # PowerShell SCCM / MECM Automation
